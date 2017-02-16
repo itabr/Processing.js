@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+  </head>
+
+  <body>
+  <div class="row" class=" text-center">
+      <h3 class="col-sm-11 text-center"> Motions Dependent on Cursor Movment </h3>
+      </div>
+<div class="container">
+
+<div class="row">
+
+  <hr>
+    <script src="js/processing.min.js"></script>
+      <script type="application/processing" data-processing-target="pjs" >
+
+void setup(){
+ size(300,300); 
+ smooth();
+}
+
+
+ float ix = 200;
+ float iy = 200;
+ float X1,Y1;
+ float delay1 = 50;
+ float x = 200;
+ float x1= 200;
+ float y = 200;
+ float y1= 200;
+ float h=20;
+ float h1=20;
+ float w=20;
+ float w1=20;
+ float speedx = 1;
+ float speedx1 =1;
+ float speedy1 =1;
+ float speedy =1;
+ float rs;
+ float rs1;
+ float rl;
+ float rl1;
+ float rm;
+ float rx;
+
+void draw(){
+  X1+=(ix-X1)/delay1;
+  Y1+=(height/2-Y1)/delay1;
+
+//noFill();
+stroke(255); 
+strokeWeight(2);
+
+  background(126);
+  fill(250,160);
+  text("Samir Tabriz", 215, 285); 
+
+  fill(0, 159);
+  ellipse(mouseX,mouseY,100,100);
+  ellipse(300-mouseX,300-mouseY,100,100);
+
+  fill(250, 150);
+  ellipse(x,y,w,h);
+  ellipse(x1,y1,w1,h1);
+     x=x+speedx;
+     y=y+speedy;
+     x1=x1+speedx1;
+     y1=y1+speedy1;
+ 
+  rs = (x-mouseX)*(x-mouseX)+(y-mouseY)*(y-mouseY);
+  rs1= (x1-(300-mouseX))*(x1-(300-mouseX))+(y1-(300-mouseY))*(y1-(300-mouseY));
+
+  
+  rl = ((100/2)-10)*((100/2)-10);
+  rm = ((100/2)-2-10)*((100/2)-2-10);
+  rx = ((100/2)+2+10)*((100/2)+2+10);
+  float i = rl - rm;
+ 
+  if (rs > (rl - i ) && rs < rl){
+    
+    speedx = random(-2, 2);
+    speedy = random(-2, 2);
+    
+    speedx=speedx*-1;
+    speedy=speedy*-1;
+    
+
+  }
+  
+  if( rs > rl){
+    speedx=speedx*-1;
+    speedy=speedy*-1;
+    x+=(mouseX-x)/delay1;
+    y+=(mouseY-y)/delay1;
+    
+  }
+ 
+    if (rs1 < rl && rs1 > (rl - i )){
+    
+    speedx1 = random(-2, 2);
+    speedy1 = random(-2, 2);
+    
+    speedx1=speedx1*-1;
+    speedy1=speedy1*-1;
+
+  }
+  
+   if( rs1 > rl){
+    speedx1=speedx1*-1;
+    speedy1=speedy1*-1;
+    x1+=(300-mouseX-x1)/delay1;
+    y1+=(300-mouseY-y1)/delay1;
+    
+  }
+
+}
+
+      </script>
+     
+      <div class="col-lg-5 col-sm-offset-0 col-sm-5">
+      
+    <canvas id="pjs" tabindex="0" width="300" height="300" id="__processing0" style="image-rendering: -webkit-optimize-contrast !important;"> </canvas> 
+    
+    </div>
+    <div class="col-lg-5 col-sm-6">
+    
+    <p>
+    Small circles limited to stay in big circules, motion of big cirlces are dependent of motion of mouse cursor and each circle moves in oppostie direction of other circle. When small circles find it self outside of big circles it moves towards the big circles and stays in it. In order to have small circles to bounce inside big circles, I used random function. every time sball ball hits the circle its vertical speed and horizental speed are being changed randomly. 
+    </p>
+    </div>
+    </div>
+    <p class="text-right"><a href= "HelloWorld.html"> Back to Home!</a></p>
+    </div>
+    
+    <footer class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p>Copyright © 2017. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="js/jquery-1.11.3.min.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="js/bootstrap.js"></script>
+</body>
+</html>
